@@ -1,0 +1,63 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Install Podman and dependencies
+      yum:
+        name:
+          - podman
+          - podman-docker
+        state: present
+
+    - name: Ensure SELinux is enforcing
+      command: setenforce 1
+
+    - name: Install policycoreutils-python-utils
+      yum:
+        name: policycoreutils-python-utils
+        state: present
+
+    - name: Create runner user
+      user:
+        name: runner
+        shell: /bin/bash
+        create_home: yes
+
+    - name: Configure sudoers for runner user
+      lineinfile:
+        path: /etc/sudoers
+        state: present
+        line: 'runner ALL=(ALL) NOPASSWD:ALL'
+
+    - name: Download GitHub Actions runner
+      become_user: runner
+      get_url:
+        url: https://github.com/actions/runner/releases/download/v2.283.3/actions-runner-linux-x64-2.283.3.tar.gz
+        dest: /home/runner/actions-runner.tar.gz
+
+    - name: Extract GitHub Actions runner
+      become_user: runner
+      unarchive:
+        src: /home/runner/actions-runner.tar.gz
+        dest: /home/runner/
+        remote_src: yes
+
+    - name: Install dependencies for runner
+      become_user: runner
+      command: /home/runner/actions-runner/bin/installdependencies.sh
+
+    - name: Configure GitHub Actions runner
+      become_user: runner
+      command: /home/runner/actions-runner/config.sh --url https://github.com/your-org/your-repo --token \$RUNNER_TOKEN
+      environment:
+        RUNNER_TOKEN: "{{ lookup('env', 'RUNNER_TOKEN') }}"
+
+    - name: Install runner as a service
+      become_user: runner
+      command: /home/runner/actions-runner/svc.sh install
+
+    - name: Enable and start runner service
+      systemd:
+        name: actions.runner.service
+        enabled: yes
+        state: started
