@@ -31,10 +31,10 @@
 
     - name: Download GitHub Actions runner
       become_user: runner
-      environment:
-        RUNNER_VERSION: "{{ lookup('env', 'RUNNER_VERSION') }}"
+      #environment:
+      #  RUNNER_VERSION: "{{ lookup('env', 'RUNNER_VERSION') }}"
       get_url:
-        url: https://github.com/actions/runner/releases/download/v$RUNNER_VERSION/actions-runner-linux-x64-$RUNNER_VERSION.tar.gz
+        url: https://github.com/actions/runner/releases/download/v2.317.0/actions-runner-linux-x64-v2.317.0.tar.gz
         dest: /home/runner/actions-runner.tar.gz
 
     - name: Extract GitHub Actions runner
@@ -50,11 +50,11 @@
 
     - name: Configure GitHub Actions runner
       become_user: runner
-      command: /home/runner/actions-runner/config.sh --url https://github.com/$RUNNER_ORG --token \$RUNNER_TOKEN --labels \$RUNNER_LABELS --unattended
-      environment:
-        RUNNER_ORG: "{{ lookup('env', 'RUNNER_ORG') }}"
-        RUNNER_TOKEN: "{{ lookup('env', 'RUNNER_TOKEN') }}"
-        RUNNER_LABELS: "{{ lookup('env', 'RUNNER_LABELS') }}"
+      command: /home/runner/actions-runner/config.sh --url https://github.com/redhatryan/podman-actions --token \AYKPCABO5ZDHOJN57UQV6RLGSBCXY --labels \self-hosted --unattended
+      $environment:
+       # RUNNER_ORG: "{{ lookup('env', 'RUNNER_ORG') }}"
+       # RUNNER_TOKEN: "{{ lookup('env', 'RUNNER_TOKEN') }}"
+       # RUNNER_LABELS: "{{ lookup('env', 'RUNNER_LABELS') }}"
 
     - name: Install runner as a service
       become_user: runner
