@@ -51,7 +51,7 @@
     - name: Configure GitHub Actions runner
       become_user: runner
       command: /home/runner/actions-runner/config.sh --url https://github.com/redhatryan/podman-actions --token \AYKPCABO5ZDHOJN57UQV6RLGSBCXY --labels \self-hosted --unattended
-      $environment:
+      #$environment:
        # RUNNER_ORG: "{{ lookup('env', 'RUNNER_ORG') }}"
        # RUNNER_TOKEN: "{{ lookup('env', 'RUNNER_TOKEN') }}"
        # RUNNER_LABELS: "{{ lookup('env', 'RUNNER_LABELS') }}"
