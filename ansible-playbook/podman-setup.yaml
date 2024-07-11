@@ -50,7 +50,7 @@
 
     - name: Configure GitHub Actions runner
       become_user: runner
-      command: /home/runner/config.sh --url https://github.com/redhatryan/podman-actions --token \AYKPCABO5ZDHOJN57UQV6RLGSBCXY --labels \self-hosted --unattended
+      command: /home/runner/config.sh --url https://github.com/redhatryan/podman-actions --token \AYKPCAEED2H3EUTBW5AMXHLGSBF42 --labels \self-hosted --unattended
       #$environment:
        # RUNNER_ORG: "{{ lookup('env', 'RUNNER_ORG') }}"
        # RUNNER_TOKEN: "{{ lookup('env', 'RUNNER_TOKEN') }}"
@@ -58,7 +58,7 @@
 
     - name: Install runner as a service
       become_user: runner
-      command: /home/runner/svc.sh runner
+      command: /home/runner/svc.sh install runner
 
     - name: Enable and start runner service
       systemd:
