@@ -58,7 +58,7 @@
 
     - name: Install runner as a service
       become_user: runner
-      command: /home/runner/actions-runner/svc.sh install
+      command: /home/runner/svc.sh runner
 
     - name: Enable and start runner service
       systemd:
