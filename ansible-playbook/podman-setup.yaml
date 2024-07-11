@@ -41,7 +41,7 @@
       become_user: runner
       unarchive:
         src: /home/runner/actions-runner.tar.gz
-        dest: /home/runner/
+        dest: /home/runner/actions-runner
         remote_src: yes
 
     #- name: Install dependencies for runner
