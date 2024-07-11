@@ -31,6 +31,8 @@
 
     - name: Download GitHub Actions runner
       become_user: runner
+      environment:
+        RUNNER_VERSION: "{{ lookup('env', 'RUNNER_VERSION') }}"
       get_url:
         url: https://github.com/actions/runner/releases/download/v$RUNNER_VERSION/actions-runner-linux-x64-$RUNNER_VERSION.tar.gz
         dest: /home/runner/actions-runner.tar.gz
