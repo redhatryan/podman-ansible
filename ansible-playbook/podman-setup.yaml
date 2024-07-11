@@ -57,8 +57,8 @@
        # RUNNER_LABELS: "{{ lookup('env', 'RUNNER_LABELS') }}"
 
     - name: Install runner as a service
-      become_user: root
-      command: /home/runner/svc.sh install runner
+      become_user: runner
+      command: /home/runner/svc.sh install
 
     - name: Enable and start runner service
       systemd:
