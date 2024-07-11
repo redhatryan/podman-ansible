@@ -9,8 +9,8 @@
           - podman-docker
         state: present
 
-    - name: Ensure SELinux is enforcing
-      command: setenforce 1
+    - name: Ensure SELinux is not enforcing
+      command: setenforce 0
 
     - name: Install policycoreutils-python-utils
       yum:
@@ -32,7 +32,7 @@
     - name: Download GitHub Actions runner
       become_user: runner
       get_url:
-        url: https://github.com/actions/runner/releases/download/v2.283.3/actions-runner-linux-x64-2.283.3.tar.gz
+        url: https://github.com/actions/runner/releases/download/v2.317.0/actions-runner-linux-x64-2.283.3.tar.gz
         dest: /home/runner/actions-runner.tar.gz
 
     - name: Extract GitHub Actions runner
@@ -48,9 +48,11 @@
 
     - name: Configure GitHub Actions runner
       become_user: runner
-      command: /home/runner/actions-runner/config.sh --url https://github.com/your-org/your-repo --token \$RUNNER_TOKEN
+      command: /home/runner/actions-runner/config.sh --url https://github.com/$RUNNER_ORG --token \$RUNNER_TOKEN --labels \$RUNNER_LABELS --unattended
       environment:
+        RUNNER_ORG: "{{ lookup('env', 'RUNNER_ORG') }}"
         RUNNER_TOKEN: "{{ lookup('env', 'RUNNER_TOKEN') }}"
+        RUNNER_LABELS: "{{ lookup('env', 'RUNNER_LABELS') }}"
 
     - name: Install runner as a service
       become_user: runner
