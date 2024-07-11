@@ -44,9 +44,9 @@
         dest: /home/runner/
         remote_src: yes
 
-    - name: Install dependencies for runner
-      become_user: runner
-      command: /home/runner/actions-runner/bin/installdependencies.sh
+    #- name: Install dependencies for runner
+    #  become_user: runner
+    #  command: /home/runner/actions-runner/bin/installdependencies.sh
 
     - name: Configure GitHub Actions runner
       become_user: runner
