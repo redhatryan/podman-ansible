@@ -41,7 +41,7 @@
       become_user: runner
       unarchive:
         src: /home/runner/actions-runner.tar.gz
-        dest: /home/runner/actions-runner
+        dest: /home/runner/
         remote_src: yes
 
     #- name: Install dependencies for runner
@@ -50,7 +50,7 @@
 
     - name: Configure GitHub Actions runner
       become_user: runner
-      command: /home/runner/actions-runner/config.sh --url https://github.com/redhatryan/podman-actions --token \AYKPCABO5ZDHOJN57UQV6RLGSBCXY --labels \self-hosted --unattended
+      command: /home/runner/config.sh --url https://github.com/redhatryan/podman-actions --token \AYKPCABO5ZDHOJN57UQV6RLGSBCXY --labels \self-hosted --unattended
       #$environment:
        # RUNNER_ORG: "{{ lookup('env', 'RUNNER_ORG') }}"
        # RUNNER_TOKEN: "{{ lookup('env', 'RUNNER_TOKEN') }}"
