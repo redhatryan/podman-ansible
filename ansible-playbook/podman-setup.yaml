@@ -34,7 +34,7 @@
       #environment:
       #  RUNNER_VERSION: "{{ lookup('env', 'RUNNER_VERSION') }}"
       get_url:
-        url: https://github.com/actions/runner/releases/download/v2.317.0/actions-runner-linux-x64-v2.317.0.tar.gz
+        url: https://github.com/actions/runner/releases/download/v2.317.0/actions-runner-linux-x64-q2.317.0.tar.gz
         dest: /home/runner/actions-runner.tar.gz
 
     - name: Extract GitHub Actions runner
