@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: apply-selinux-policy
+spec:
+  steps:
+  - name: generate-and-apply-policy
+    image: registry.access.redhat.com/ubi8/ubi
+    script: |
+      LOG_FILE="/var/log/audit/audit.log"
+      MODULE_NAME="auto_policy"
+      MODULE_FILE="/tmp/${MODULE_NAME}.pp"
+
+      ausearch -m avc -ts recent > /tmp/avc_denials.log
+      audit2allow -M ${MODULE_NAME} < /tmp/avc_denials.log
+      if [ -f "${MODULE_FILE}" ]; then
+        semodule -i ${MODULE_FILE}
+        echo "SELinux policy module ${MODULE_NAME} applied successfully."
+      else
+        echo "No SELinux denials found or policy module generation failed."
+      fi
