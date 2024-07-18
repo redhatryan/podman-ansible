@@ -1,5 +1,5 @@
-namespace: validated-pattern
-name: collections
+namespace: validated_pattern
+name: collection
 version: 1.0.0
 readme: README.md
 authors:
