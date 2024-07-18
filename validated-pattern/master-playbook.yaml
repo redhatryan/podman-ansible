@@ -3,7 +3,7 @@
   hosts: all
   roles:
  #   - role: github-self-hosted
-    - role: rootless-podman
+    - role: roles/rootless-podman
       podman_user_name: runner
       become: yes
  #   - role: selinux-rhel
