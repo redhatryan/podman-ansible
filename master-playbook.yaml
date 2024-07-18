@@ -10,10 +10,3 @@
     - role: validated_pattern.collection.rootless_podman
       podman_user_name: redhat
     #- role: validated_pattern.collection.selinux_rhel
-  tasks:
-    - name: Enable and start Podman socket for the user
-      systemd:
-        name: podman.socket
-        state: started
-        enabled: yes
-        user: true
