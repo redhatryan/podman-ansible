@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Install Podman and dependencies
+      yum:
+        name:
+          - podman
+          - podman-docker
+        state: present
