@@ -48,9 +48,9 @@
     #  become_user: runner
     #  command: /home/runner/actions-runner/bin/installdependencies.sh
 
-   # - name: Configure GitHub Actions runner
-   #   become_user: runner
-   #   command: /home/runner/config.sh --url https://github.com/redhatryan/podman-actions --token \AYKPCAEED2H3EUTBW5AMXHLGSBF42 --labels \self-hosted --unattended
+    - name: Configure GitHub Actions runner
+      become_user: runner
+      command: /home/runner/config.sh --url https://github.com/redhatryan/podman-actions --token \AYKPCACW7TCWHJHTB5VXFS3GTCP7I --labels \self-hosted --unattended
       #$environment:
        # RUNNER_ORG: "{{ lookup('env', 'RUNNER_ORG') }}"
        # RUNNER_TOKEN: "{{ lookup('env', 'RUNNER_TOKEN') }}"
