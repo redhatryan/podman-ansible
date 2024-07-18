@@ -27,7 +27,7 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-    - role: rootless podman
+    - role: rootless-podman
       podman_user_name: runner
       become: yes
 ```

@@ -1,0 +1,8 @@
+namespace: validated-pattern
+name: collections
+version: 1.0.0
+readme: README.md
+authors:
+  - Ryan Etten <retten@redhat.com>
+description: >
+  This collection contains roles for deploying GitHub self-hosted runners, configuring rootless Podman, and managing SELinux on RHEL.
