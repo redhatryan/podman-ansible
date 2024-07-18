@@ -1,6 +1,6 @@
 ---
 - name: Setup Rootless Podman
-  hosts: app_servers
+#  hosts: TO_DEFINE_LATER
   roles:
     - role: rootless-podman
   vars_files:

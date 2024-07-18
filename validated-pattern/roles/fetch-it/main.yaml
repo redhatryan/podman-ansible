@@ -1,17 +1,38 @@
 ---
 - name: Deploy Application
-  hosts: app_servers
+ # hosts: TO_DO_LATER
   become: yes
+  vars_files:
+    - group_vars/main.yml
+    - inventories/lab/group_vars/main.yml
   tasks:
     - name: Install dependencies
+      apt:
+        name:
+          - curl
+          - unzip
+          - podman
+        state: present
+      when: ansible_os_family == 'Debian'
+    
+    - name: Install dependencies
       yum:
-        name: curl
+        name: 
+          - curl
+          - podman
         state: present
       when: ansible_os_family == 'RedHat'
 
+    - name: Enable and start Podman socket for the user
+      systemd:
+        name: podman.socket
+        state: started
+        enabled: yes
+        user: true
+
     - name: Download FetchIt binary
       get_url:
-        url: "https://github.com/fetchit-io/fetchit/releases/download/v1.0.0/fetchit"
+        url: "https://github.com/containers/fetchit/releases/download/v0.0.1/fetchit"
         dest: /usr/local/bin/fetchit
         mode: '0755'
 
@@ -23,8 +44,8 @@
 
     - name: Copy FetchIt configuration file
       copy:
-        src: /gitops/fetch-it/fetchit.yaml
-        dest: /etc/fetchit/fetchit.yaml
+        src: /gitops/fetch-it/config.yaml
+        dest: /etc/fetchit/config.yaml
         mode: '0644'
 
     - name: Create systemd service file for FetchIt
@@ -36,7 +57,7 @@
           After=network.target
 
           [Service]
-          ExecStart=/usr/local/bin/fetchit -c /etc/fetchit/fetchit.yaml
+          ExecStart=/usr/local/bin/fetchit -c /etc/fetchit/config.yaml
           Restart=always
           User=root
 

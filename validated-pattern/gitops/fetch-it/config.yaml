@@ -1,0 +1,18 @@
+targetConfigs:
+  - url: https://github.com/containers/fetchit
+    branch: main
+    ansible:
+      - name: ans-ex
+        targetPath: examples/ansible
+        sshDirectory: /root/.ssh
+        schedule: "*/1 * * * *"
+    systemd:
+      - name: sysd-ex
+        targetPath: examples/systemd
+        root: true
+        enable: false
+        schedule: "*/1 * * * *"
+prune:
+  All: true
+  Volumes: false
+  schedule: "*/1 * * * *"

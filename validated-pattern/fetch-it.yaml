@@ -1,6 +1,6 @@
 ---
 - name: Setup FetchIt
-  hosts: app_servers
+#  hosts: TO_DEFINE_LATER
   roles:
     - role: fetch-it
   vars_files:

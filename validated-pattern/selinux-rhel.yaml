@@ -1,6 +1,6 @@
 ---
 - name: Setup SELinux for RHEL
-  hosts: app_servers
+#  hosts: TO_DEFINE_LATER
   roles:
     - role: selinux-rhel
   vars_files:

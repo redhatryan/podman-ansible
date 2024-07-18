@@ -1,6 +1,6 @@
 ---
 - name: Setup GitHub Self-Hosted Runner
-  hosts: app_servers
+#  hosts: TO_DEFINE_LATER
   roles:
     - role: github-self-hosted
   vars_files:
