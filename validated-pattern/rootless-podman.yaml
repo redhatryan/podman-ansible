@@ -1,0 +1,8 @@
+---
+- name: Setup Rootless Podman
+  hosts: app_servers
+  roles:
+    - role: rootless-podman
+  vars_files:
+    - group_vars/main.yaml
+    - inventories/lab/group_vars/main.yaml

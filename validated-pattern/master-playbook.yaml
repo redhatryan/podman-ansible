@@ -1,0 +1,10 @@
+---
+- name: Deploy Application
+  hosts: app_servers
+  roles:
+    - role: github-self-hosted
+    - role: rootless-podman
+    - role: selinux-rhel
+  vars_files:
+    - group_vars/main.yaml
+    - inventories/lab/group_vars/main.yaml

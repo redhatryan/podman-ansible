@@ -1,0 +1,7 @@
+#role defaults
+#Expected Variable Inheritance
+#When running the playbook, Ansible will merge variables from these sources, with precedence from role defaults to environment-specific group vars. This means:
+
+#Role defaults provide the base variables.
+#Top-level group vars override or extend the role defaults.
+#Environment-specific group vars override or extend the top-level group vars.

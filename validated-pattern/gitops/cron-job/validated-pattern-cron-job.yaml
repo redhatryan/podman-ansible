@@ -1,0 +1,15 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: ansible-cronjob
+spec:
+  schedule: "*/5 * * * *" # Adjust the schedule as needed
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: ansible
+            image: <your-docker-repo>/ansible:latest
+            command: ["/bin/sh", "-c", "ansible-playbook -i inventories/lab/inventory master-playbook.yml"]
+          restartPolicy: OnFailure

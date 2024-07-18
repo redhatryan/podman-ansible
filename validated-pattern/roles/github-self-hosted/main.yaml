@@ -1,0 +1,12 @@
+---
+- name: GitHub Self-Hosted Runner Setup
+  hosts: all
+  tasks:
+    - name: Ensure necessary packages are installed
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - some_other_package
+    # Add more tasks as needed

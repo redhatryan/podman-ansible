@@ -1,0 +1,57 @@
+---
+- name: Deploy Application
+  hosts: app_servers
+  become: yes
+  tasks:
+    - name: Install dependencies
+      yum:
+        name: curl
+        state: present
+      when: ansible_os_family == 'RedHat'
+
+    - name: Download FetchIt binary
+      get_url:
+        url: "https://github.com/fetchit-io/fetchit/releases/download/v1.0.0/fetchit"
+        dest: /usr/local/bin/fetchit
+        mode: '0755'
+
+    - name: Create FetchIt configuration directory
+      file:
+        path: /etc/fetchit
+        state: directory
+        mode: '0755'
+
+    - name: Copy FetchIt configuration file
+      copy:
+        src: /gitops/fetch-it/fetchit.yaml
+        dest: /etc/fetchit/fetchit.yaml
+        mode: '0644'
+
+    - name: Create systemd service file for FetchIt
+      copy:
+        dest: /etc/systemd/system/fetchit.service
+        content: |
+          [Unit]
+          Description=FetchIt Service
+          After=network.target
+
+          [Service]
+          ExecStart=/usr/local/bin/fetchit -c /etc/fetchit/fetchit.yaml
+          Restart=always
+          User=root
+
+          [Install]
+          WantedBy=multi-user.target
+      notify: restart fetchit
+
+    - name: Enable FetchIt service
+      systemd:
+        name: fetchit
+        enabled: yes
+        state: started
+
+  handlers:
+    - name: restart fetchit
+      systemd:
+        name: fetchit
+        state: restarted

@@ -1,0 +1,15 @@
+apiVersion: fetchit.io/v1
+kind: FetchIt
+metadata:
+  name: ansible-deployment
+spec:
+  source:
+    repoPath: '/path/to/your/local/git/repo'
+    branch: 'master'
+    path: 'ansible'
+  action:
+    command: 'ansible-playbook'
+    args:
+      - '-i'
+      - 'inventories/lab/inventory'
+      - 'master-playbook.yml'

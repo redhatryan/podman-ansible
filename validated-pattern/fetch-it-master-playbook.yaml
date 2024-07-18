@@ -1,0 +1,8 @@
+---
+- name: Setup FetchIt
+  hosts: app_servers
+  roles:
+    - role: fetch-it
+  vars_files:
+    - group_vars/main.yaml
+    - inventories/lab/group_vars/main.yaml
