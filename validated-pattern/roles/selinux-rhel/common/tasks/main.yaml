@@ -1,0 +1,7 @@
+    - name: Ensure SELinux is not enforcing
+      command: setenforce 0
+
+    - name: Install policycoreutils-python-utils
+      yum:
+        name: policycoreutils-python-utils
+        state: present
