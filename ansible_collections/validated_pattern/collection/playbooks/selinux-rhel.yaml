@@ -1,0 +1,6 @@
+---
+- name: Setup SELinux for RHEL
+  hosts: all
+  become: yes
+  roles:
+    - role: validated_pattern.my_collection.selinux_rhel

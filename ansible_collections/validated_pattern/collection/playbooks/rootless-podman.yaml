@@ -1,0 +1,7 @@
+---
+- name: Setup Rootless Podman
+  hosts: all
+  become: yes
+  roles:
+    - role: validated_pattern.my_collection.rootless_podman
+      podman_user_name: runner

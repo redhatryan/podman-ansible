@@ -1,8 +1,0 @@
----
-- name: Setup GitHub Self-Hosted Runner
-#  hosts: TO_DEFINE_LATER
-  roles:
-    - role: github-self-hosted
-  vars_files:
-    - group_vars/main.yaml
-    - inventories/lab/group_vars/main.yaml

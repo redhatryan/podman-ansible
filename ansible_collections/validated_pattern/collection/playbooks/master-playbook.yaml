@@ -1,0 +1,19 @@
+---
+- name: Deploy Validated Pattern
+  hosts: all
+  become: yes
+  #vars_files:
+  #  - group_vars/main.yml
+  #  - inventories/lab/group_vars/main.yml
+  roles:
+    #- role: validated_pattern.collection.github_self_hosted
+    - role: validated_pattern.collection.rootless_podman
+      podman_user_name: redhat
+    #- role: validated_pattern.collection.selinux_rhel
+  tasks:
+    - name: Enable and start Podman socket for the user
+      systemd:
+        name: podman.socket
+        state: started
+        enabled: yes
+        user: true

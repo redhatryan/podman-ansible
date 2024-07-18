@@ -1,0 +1,6 @@
+---
+- name: Setup GitHub Self-Hosted Runner
+  hosts: all
+  become: yes
+  roles:
+    - role: validated_pattern.collection.github_self_hosted
