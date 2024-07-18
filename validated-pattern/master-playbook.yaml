@@ -1,6 +1,6 @@
 ---
 - name: Deploy Application
-#  hosts: TO_DEFINE_LATER
+  hosts: all
   roles:
  #   - role: github-self-hosted
     - role: rootless-podman
