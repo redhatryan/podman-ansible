@@ -5,3 +5,7 @@
 #Role defaults provide the base variables.
 #Top-level group vars override or extend the role defaults.
 #Environment-specific group vars override or extend the top-level group vars.
+
+---
+podman_user_group: "{{ podman_user_name }}"
+

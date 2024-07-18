@@ -4,6 +4,8 @@
   roles:
  #   - role: github-self-hosted
     - role: rootless-podman
+      podman_user_name: redhat
+      become: yes
  #   - role: selinux-rhel
  #   - role: fetch-it
   vars_files:
