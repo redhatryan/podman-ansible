@@ -15,8 +15,4 @@
   hosts: all
   collections:
     - validated_pattern.collection
-
-  tasks:
-    - import_role:
-        name: rootless_podman
-        podman_user_name: redhat
+  import_playbook: validated_pattern.collection.rootless_podman
