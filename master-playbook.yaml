@@ -15,4 +15,7 @@
   hosts: all
   collections:
     - validated_pattern.collection
-  import_playbook: validated_pattern.collection.rootless_podman
+
+  tasks:
+    import_role: 
+      name: validated_pattern.collection.rootless_podman

@@ -18,3 +18,5 @@
 #  cloud_platforms: []
 #  tags: []
 
+collections:
+  - validated_pattern.collection
