@@ -4,4 +4,5 @@
   become: yes
   roles:
     - role: validated_pattern.collection.rootless_podman
-      podman_user_name: redhat
+      vars: 
+        podman_user_name: redhat
