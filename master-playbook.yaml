@@ -11,8 +11,7 @@
 #      podman_user_name: redhat
     #- role: validated_pattern.collection.selinux_rhel
 
-- name: Deploy Validated Pattern
-  hosts: all
+- hosts: all
   collections:
     - validated_pattern.collection
 
