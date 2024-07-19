@@ -1,6 +1,6 @@
 ---
 - name: Deploy Rootless Podman
-  hosts: all
+  hosts: localhost
   become: yes
   vars_files:
     - ../group_vars/mail.yml
