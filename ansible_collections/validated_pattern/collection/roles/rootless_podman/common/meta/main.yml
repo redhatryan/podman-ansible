@@ -19,4 +19,4 @@
 #  tags: []
 
 collections:
-  - rootless_podman
+  - validated_pattern.collection
