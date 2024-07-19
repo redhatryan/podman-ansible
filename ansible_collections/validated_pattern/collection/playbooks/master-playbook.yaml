@@ -2,9 +2,9 @@
 - name: Deploy Rootless Podman
   hosts: localhost
   become: yes
-  #vars_files:
+  vars_files:
   #  - ../group_vars/mail.yml
-  #  - ../inventories/lab/group_vars/main.yml
+    - ../inventories/lab/group_vars/main.yml
   tasks:
     - name: Include Rootless Podman Role
       include_role:
