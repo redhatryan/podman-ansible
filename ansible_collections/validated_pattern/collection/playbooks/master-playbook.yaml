@@ -1,19 +1,35 @@
 ---
-#- name: Deploy GitHub Self-Hosted Runner
-#  hosts: all
-#  become: yes
-#  roles:
-#    - role: validated_pattern.my_collection.github_self_hosted
-
 - name: Deploy Rootless Podman
   hosts: all
   become: yes
-  roles:
-    - role: validated_pattern.collection.rootless_podman
-      podman_user_name: redhat
+  vars_files:
+    - ../group_vars/mail.yml
+    - ../inventories/lab/group_vars/main.yml
+  tasks:
+    - name: Include Rootless Podman Role
+      include_role:
+        name: validated_pattern.my_collection.rootless_podman
+      vars:
+        podman_user_name: redhat
 
 #- name: Deploy SELinux for RHEL
 #  hosts: all
 #  become: yes
-# roles:
-#    - role: validated_pattern.my_collection.selinux_rhel
+#  vars_files:
+#    - ../group_vars/main.yml
+#    - ../inventories/lab/group_vars/main.yml
+#  tasks:
+#    - name: Include SELinux RHEL Role
+#      include_role:
+#        name: validated_pattern.my_collection.selinux_rhel
+
+#- name: Deploy GitHub Self-Hosted Runner
+#  hosts: all
+#  become: yes
+#  vars_files:
+#    - ../group_vars/main.yml
+#    - ../inventories/lab/group_vars/main.yml
+#  tasks:
+#    - name: Include GitHub Self-Hosted Runner Role
+#      include_role:
+#        name: validated_pattern.my_collection.github_self_hosted
