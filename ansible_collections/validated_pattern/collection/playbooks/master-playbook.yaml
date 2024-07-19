@@ -9,8 +9,8 @@
     - name: Include Rootless Podman Role
       include_role:
         name: validated_pattern.collection.rootless_podman
-      vars:
-        podman_user_name: redhat
+#      vars:
+#        podman_user_name: redhat
 
     - name: Debug variables
       debug:
