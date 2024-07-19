@@ -12,6 +12,10 @@
       vars:
         podman_user_name: redhat
 
+    - name: Debug variables
+      debug:
+        msg: "Podman user: {{ podman_user_name }}"
+
 #- name: Deploy SELinux for RHEL
 #  hosts: all
 #  become: yes
