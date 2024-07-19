@@ -7,5 +7,6 @@
 #Environment-specific group vars override or extend the top-level group vars.
 
 ---
+podman_user_name: redhat
 podman_user_group: "{{ podman_user_name }}"
 
