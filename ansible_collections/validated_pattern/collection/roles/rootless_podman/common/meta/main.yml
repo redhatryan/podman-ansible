@@ -18,5 +18,5 @@
 #  cloud_platforms: []
 #  tags: []
 
-collections:
-  - validated_pattern.collection
+#collections:
+#  - validated_pattern.collection.rootless_podman
