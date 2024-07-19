@@ -8,7 +8,7 @@
   tasks:
     - name: Include Rootless Podman Role
       include_role:
-        name: validated_pattern.my_collection.rootless_podman
+        name: validated_pattern.collection.rootless_podman
       vars:
         podman_user_name: redhat
 
@@ -21,7 +21,7 @@
 #  tasks:
 #    - name: Include SELinux RHEL Role
 #      include_role:
-#        name: validated_pattern.my_collection.selinux_rhel
+#        name: validated_pattern.collection.selinux_rhel
 
 #- name: Deploy GitHub Self-Hosted Runner
 #  hosts: all
@@ -32,4 +32,4 @@
 #  tasks:
 #    - name: Include GitHub Self-Hosted Runner Role
 #      include_role:
-#        name: validated_pattern.my_collection.github_self_hosted
+#        name: validated_pattern.collection.github_self_hosted
