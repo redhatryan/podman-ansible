@@ -4,9 +4,3 @@
   become: yes
   roles:
     - role: validated_pattern.collection.rootless_podman
-      vars:
-        podman_user_name: redhat
-  tasks:
-    - name: Debug variables
-      debug:
-        msg: "Podman user: {{ podman_user_name }}"
