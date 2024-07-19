@@ -6,6 +6,6 @@
 #Top-level group vars override or extend the role defaults.
 #Environment-specific group vars override or extend the top-level group vars.
 
----
-podman_user_name: redhat
+#---
+#podman_user_name: redhat
 
