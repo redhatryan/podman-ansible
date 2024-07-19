@@ -3,4 +3,4 @@
   hosts: all
   become: yes
   roles:
-    - role: validated_pattern.my_collection.selinux_rhel
+    - role: validated_pattern.collection.selinux_rhel
