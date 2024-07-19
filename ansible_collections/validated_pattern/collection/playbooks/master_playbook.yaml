@@ -1,13 +1,4 @@
 ---
-- name: Run all playbooks
-  hosts: localhost
-  become: yes
-  tasks:
- #   - name: Include GitHub Self-Hosted Runner playbook
- #     import_playbook: github_self_hosted.yml
-
-    - name: Include Rootless Podman playbook
-      import_playbook: rootless_podman.yaml
-
-#    - name: Include SELinux RHEL playbook
-#      import_playbook: selinux_rhel.yml
+#    - import_playbook: github_self_hosted.yml
+    - import_playbook: rootless_podman.yaml
+#    - import_playbook: selinux_rhel.yml
