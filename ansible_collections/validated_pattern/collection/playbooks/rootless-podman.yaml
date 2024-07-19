@@ -1,7 +1,7 @@
 ---
-- name: Setup Rootless Podman
-  hosts: all
+- name: Deploy Rootless Podman
+  hosts: localhost
   become: yes
   roles:
     - role: validated_pattern.my_collection.rootless_podman
-      podman_user_name: runner
+      podman_user_name: redhat
