@@ -5,4 +5,4 @@
   roles:
     - role: validated_pattern.collection.rootless_podman
       vars: 
-        podman_user_name: redhat
+        podman_user_name: "{{ podman_user_name }}"
