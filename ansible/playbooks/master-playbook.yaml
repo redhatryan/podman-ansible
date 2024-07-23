@@ -1,0 +1,9 @@
+---
+- name: Apply RHEL system roles and custom role
+  hosts: all
+  become: true
+
+  roles:
+    - linux-system-roles.selinux
+    - linux-system-roles.podman
+    - my_custom_role
