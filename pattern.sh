@@ -59,7 +59,7 @@ sudo yum install -y ansible-core
 #+ install ping-test workflow and app source project into user github account
 #+ configure github to call runner
 
-ansible-playbook -i localhost, deploy_github_runner.yml
+ansible-playbook -i localhost, main_playbook.yaml
 
 
 #+ run install_validate script - ansible playbook
