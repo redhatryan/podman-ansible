@@ -1,0 +1,9 @@
+---
+- name: Apply GHA Rootless Podman Pattern on RHEL
+  hosts: all
+  become: true
+
+  roles:
+    - rootless_podman
+    - selinux_rhel
+    - github_self_hosted

@@ -1,0 +1,29 @@
+#---
+#dependencies: []
+#galaxy_info:
+#  author: Your Name
+#  description: Rootless Podman role for deploying containers
+#  license: MIT
+#  min_ansible_version: 2.9
+#  platforms:
+#    - name: EL
+#      versions:
+#        - 7
+#        - 8
+#    - name: Debian
+#      versions:
+#        - buster
+#        - stretch
+#  categories: []
+#  cloud_platforms: []
+#  tags: []
+
+#collections:
+#  - validated_pattern.collection.rootless_podman
+galaxy_info:
+  author: Ryan Etten
+  description: Installs and Configures Rootless Podman
+  company: Red Hat 
+  role_name: rootless_podman 
+
+  min_ansible_version: "2.1"
